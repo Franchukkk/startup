@@ -1,0 +1,37 @@
+-
+    let cardsInfo = {
+        font: {
+            img: "img/fa-font.png",
+            alt: "font",
+            title: "Clean Typography",
+            description: [
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.",
+            ],
+        },
+        code: {
+            img: "img/fa-code.png",
+            alt: "code",
+            title: "Rock Solid Code",
+            description: [
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum.",
+            ],
+        },
+        support: {
+            img: "img/fa-support.png",
+            alt: "support",
+            title: "Expert Support",
+            description: [
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit. Lorem ipsum."
+            ],
+        },
+    }
+
+
+mixin cards(card)
+    .services-block
+        .services-img
+            img(src=card.img, alt=card.alt)
+        h3.title-block= card.title
+        each line in card.description
+            p.paragraph-text= line
+

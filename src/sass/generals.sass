@@ -1,0 +1,741 @@
+@import components/mixins
+*
+    margin: 0
+    padding: 0
+html
+    font-size: 13px
+    +media(425)
+        font-size: 14px
+    +media(768)
+        font-size: 15px
+    +media(1200)
+        font-size: 16px
+    +media(2000)
+        font-size: 22px
+
+.overflow-hidden
+    overflow-x: hidden
+
+.menu-navigation
+    display: block
+    right: -100%
+    position: fixed
+    top: 0
+    width: 100%
+    height: 110vh
+    z-index: 5
+    background: #c0301c
+    transition: 1s
+    ul
+        text-align-last: left
+        margin-left: 2.5rem
+        padding-top: 5rem
+        display: block !important
+        li
+            a
+                line-height: 4em
+                font-size: 20px !important
+
+.parallax-header 
+    background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../img/startup-hero-bg.jpg')
+    background-position-y: 50%
+    background-position-x: 80%
+    background-size: cover
+    background-repeat: no-repeat
+    background-attachment: fixed
+    display: flex
+    justify-content: center
+    text-align: center
+    color: #fff
+    font-size: 1.5rem
+
+    +media(520)
+        background-size: 120%
+
+    
+.burger 
+    position: fixed
+    width: 30px
+    height: 2px
+    background-color: #fff
+    z-index: 999
+    top: 47px
+    right: 3%
+    +media(576)
+        right: 10%
+
+    &::before
+        content: ''
+        position: absolute
+        width: 30px
+        background-color: #fff
+        height: 2px
+        left: 0
+        top: -10px
+        transition: 0.5s  
+    &::after
+        content: ''
+        position: absolute
+        width: 30px
+        background-color: #fff
+        height: 2px
+        left: 0
+        bottom: -10px
+        transition: 0.5s  
+    +media(761)
+        display: none
+    
+.burger-btn-active
+    height: 0
+    &::before
+        top: 0px
+        transform: rotate(45deg)
+    &::after
+        top: 0px
+        transform: rotate(-45deg)
+    
+.burger-active
+    right: 0
+
+
+.navigation
+    padding-top: 2.5rem
+
+.text-header
+    // padding-top: 30%
+    position: absolute
+    left: 0
+    top: 40%
+    transform: translateY(-40%)
+    z-index: 1
+    
+
+.header-line
+    font-family: "Montserrat"
+    .logo
+        font-size: 1.5rem
+        line-height: 2.25rem
+        font-weight: 700
+    .header-navigation
+        ul
+            column-gap: 2.1875rem
+            a
+                color: #fff
+                text-decoration: none
+                font-size: 0.875rem
+                font-weight: 400
+            
+ul
+    list-style-type: none
+
+h1
+    font-size: 3rem
+    line-height: 1.5em
+    text-transform: uppercase
+    color: #ffffff
+    font-weight: 400
+
+.button-white
+    display: inline-block
+    width:  11.25rem
+    padding:0.81rem 0 
+    font-size: 1.5rem
+    text-transform: uppercase
+    text-decoration: none
+    border-radius: 0.125rem
+    background-color: transparent
+    border: 0.125rem solid #ffffff
+    text-transform: uppercase
+
+.text-header
+    p
+        margin-bottom: 2.75rem
+
+.title-text-line
+    position: relative
+    font-size: 1.25rem
+    line-height: 2rem
+    text-transform: uppercase
+    color: #555555
+    font-family: 'Montserrat'
+    margin-bottom: 3.75rem
+    &::after
+        content: ''
+        position: absolute
+        width: 3.125rem
+        height: 0.187rem
+        background-color: #555555
+        left: 50%
+        transform: translateX(-50%)
+        bottom: -1.75rem
+
+.sm-containers
+    padding-top: 6.25rem
+    padding-bottom: 5.93rem
+    p
+        margin-bottom: 3.75rem
+        font-family: "Roboto Slab"
+
+.services-img
+    display: flex
+    justify-content: center
+    align-items: center
+    width:5.625rem
+    height:5.625rem
+    border-radius: 2.81rem
+    background-color: #fff
+    border: 0.125rem solid #dddddd
+    margin: auto
+    margin-bottom: 1.56rem
+    &:hover
+        background-color: #c0301c
+        img
+            filter: brightness(100)
+.title-block
+    display: block
+    font-size: 0.875rem
+    line-height: 4em
+    text-transform: uppercase
+    color: #555555
+    font-weight: 600
+    font-family: "Montserrat"
+    text-align: center
+.paragraph-text
+    font-size: 0.875rem
+    line-height: 1.5rem
+    color: #555555
+    font-weight: 400
+    font-family: "Roboto Slab"
+    text-align: center
+
+.about-us-cont
+    width: 100%
+    max-width: calc(100%)
+    background-color: #f8f8f8
+
+.works
+    ul 
+        column-gap: 1rem
+        flex-wrap: wrap
+        row-gap: 1.2rem
+        column-gap: 1.56rem
+        li
+            span
+                font-size: 1rem
+                line-height: 1.5rem
+                color: #555555
+                font-family: "Roboto Slab"
+                text-decoration: none
+                cursor: pointer
+                &:hover
+                    color: #c0301c
+.gallery
+    padding-top: 3.125rem
+    padding-bottom: 5rem
+    img
+        
+        width: 100%
+        height: 320px
+        object-fit: cover
+
+.support
+    display: block !important
+    padding: 6.25rem 0
+    background: linear-gradient(rgba(#c0301c, 0.6), rgba(#c0301c, 0.6)), url('../img/lets-talk-bg.png')
+    background-position-y: 50%
+    background-position-x: 80%
+    background-size: cover
+    background-repeat: no-repeat
+    background-attachment: fixed
+    display: flex
+    justify-content: center
+    text-align: center
+    color: #fff
+    font-size: 1.5rem
+    +media(395)
+        background-size: 120%
+    h2
+        font-size: 1.875rem
+        line-height: 2.75rem
+        color: #ffffff
+        font-family: "Roboto Slab"
+        font-weight: 400
+        margin-bottom: 2.5rem
+
+.date
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #f8f8f8
+    border: 0.125rem solid #555555
+    height: 4.81rem
+    width: 4.81rem
+    span
+        font-size: 1.5rem
+        letter-spacing: 0.125rem
+        line-height: 1.25rem
+        text-transform: uppercase
+        color: #777777
+        font-weight: 700
+        font-family: "Montserrat"
+        text-align: center
+        span 
+            font-size: 1rem
+
+.title-blog 
+    h3
+        text-align: left
+        font-size: 1rem
+        line-height: 1.5rem
+        text-transform: uppercase
+        color: #c0301c
+        font-weight: 400
+        font-family: "Montserrat"
+    p
+        font-size:0.81rem
+        line-height: 1.5rem
+        color: #777777
+        font-weight: 400
+        font-family: "Roboto Slab"
+        text-align: center
+        span
+            color: #c0301c
+.text-align-left
+    text-align-last: left 
+
+.blog-posts
+    .d-flex
+        column-gap: 1.75rem
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.blog-description
+    text-align: left
+    p 
+        font-size: 0.875rem
+        line-height: 1.5rem
+        color: #555555
+        font-weight: 400
+        font-family: "Roboto Slab"
+    span
+        font-size:0.81rem
+        letter-spacing: 0.07rem
+        line-height: 1.5rem
+        text-transform: uppercase
+        color: #c0301c
+        font-weight: 700
+        font-family: "Roboto Slab"
+        text-decoration: none
+        cursor: pointer
+
+.img-p-row
+    padding: 0
+    justify-content: start
+
+
+.carousel 
+    position: relative
+    flex-wrap: nowrap
+
+
+
+.slider-container 
+  overflow: hidden
+  position: relative
+  width: 100%
+
+
+.popup-blog
+    position: absolute
+    background-color: #fff
+    height: 70vh
+    overflow-y: scroll
+    left: 50%
+    transform: translateX(-50%)
+    width: 80%
+    padding: 2.5rem
+    padding-top: 0
+    img 
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.date-title
+    column-gap: 2rem
+    row-gap: 1rem
+    flex-wrap: wrap
+    
+
+.fixed-100
+    position: fixed
+    display: none
+    justify-content: center
+    align-items: center
+    top: 0
+    left: 0
+    width: 100%
+    height: 100vh
+    background-color: rgba(#000, 0.8)
+
+
+.animated-element
+    opacity: 0
+    transform: translateY(1.25rem)
+    transition: opacity 1.5s ease, transform 0.5s ease
+
+.animated-element.animate 
+    opacity: 1
+    transform: translateY(0)
+
+
+.animate-right-to-left 
+    opacity: 0
+    transform: translateX(25rem)
+    transition: opacity 0.5s ease, transform 1s ease
+
+.animate-right-to-left.animate 
+    opacity: 1
+    transform: translateX(0) 
+
+.animate-left-to-right 
+  opacity: 0
+  transform: translateX(-25rem)
+  transition: opacity 0.5s ease, transform 1s ease
+
+.animate-left-to-right.animate 
+  opacity: 1
+  transform: translateX(0)
+
+.companies
+    background-color: #f8f8f8
+    padding: 6.25rem 0
+
+.partners-slider
+    display: flex 
+    justify-content: center !important
+    flex-wrap: wrap
+    column-gap: 2rem
+    row-gap: 2rem
+
+.review-slider
+    position: relative
+    min-height: 300px
+    p
+        font-size: 0.9rem
+        line-height: 1.875rem
+        color: #555555
+        font-weight: 400
+        font-family: "Roboto Slab"
+        text-align: center
+        font-style: italic
+        
+    span
+        font-size: 1.125rem
+        line-height: 1.875rem
+        color: #555555
+        font-weight: 400
+        font-family: "Roboto Slab"
+        text-align: center
+    +media(675)
+        min-height: 12.25rem
+.review 
+    position: absolute
+    max-width: 74.25rem
+    left: 50%
+    transform: translateX(-50%)
+    height: auto
+    opacity: 0
+    overflow: hidden
+    transition: opacity 1s
+
+
+.review.active 
+    opacity: 1
+
+.control-review-slider
+    column-gap: 0.375rem
+    justify-content: center
+
+.slider-dot
+    width: 0.875rem
+    height: 0.875rem
+    border-radius: 0.375rem
+    background-color: #dddddd
+    transition: 0.5s
+    &:hover
+        background-color: #c0301c  
+.slider-dot.active
+    border-radius: 0.375rem
+    background-color: #c0301c
+
+
+.infinity-slider.workers
+    .control-slide-left, .control-slide-right
+        position: absolute
+        width: 2.1875rem
+        height: 2.375rem
+        background-color: #555555
+        transition: 0.3s
+        top: calc((23.125rem  -  2.375rem)/2) 
+        &:hover 
+            background-color: #c0301c
+        &::before
+            content: ''
+            position: absolute
+            width: 0.5rem
+            height: 0.5rem
+            border-top: 0.125rem solid #ddd
+            border-left: 0.125rem solid #ddd
+            border-bottom: 0
+            border-right: 0
+            top: 0.93rem
+    .control-slide-left
+        left: 0
+        &::before
+            left: 0.93rem
+            transform: rotate(-45deg)
+    .control-slide-right
+        &::before
+            right: 0.93rem
+            transform: rotate(135deg)
+        right: 0
+        
+.relative
+    position: relative
+
+
+.slider-blocks
+    width: 100%
+    justify-content: space-between
+    // overflow: hidden
+
+.blocks-infinity-slider
+    display: flex
+    min-height: 390px
+    overflow: hidden
+
+.content-slider-infinity
+    transition: 1s
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 390px
+    +media(576)
+        width: 263px
+    img
+        width: 100% !important
+        object-fit: cover
+        
+
+
+
+footer
+    background-color: #c0301c
+
+.popup.popup-menu-user-data
+    position: fixed
+    display: none
+    justify-content: center
+    align-items: center
+    top: 0
+    left: 0
+    width: 100%
+    height: 100vh
+    background-color: rgba(#000, 0.8)
+.popup-body
+    position: absolute
+    width: 30%
+    height: 50%
+    background-color: #fff
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    padding: 1.25rem 0.625rem
+    .content-popup
+        padding-left: 1.5rem
+    strong
+        font-size: 1.1rem
+        font-weight: 700
+        font-family: 'Montserrat'
+    span
+        font-style: italic
+    button
+        display: inline-block
+        margin-right: 0.93rem
+        padding: 0.437rem 1.875rem
+        border: 0.07rem solid #555
+        -webkit-transition: all .8s ease
+        -o-transition: all .8s ease
+        transition: all .8s ease
+        cursor: pointer
+        text-transform: uppercase
+        font-weight: 200
+        background: #fff
+        transition: 0.5s
+        &:hover
+            background: #c0301c
+            color: #fff
+            border: 0.07rem solid #c0301c
+
+.popup-login-outline
+    display: none
+    position: fixed
+    width: 100%
+    height: 100vh
+    background: rgba(0, 0, 0, .8)
+    z-index: 10
+
+
+.popup-login 
+    position: fixed
+    min-width: 290px
+    width: 60%
+    height: auto
+    background-color: #fff
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    padding: 1.25rem 0.625rem
+    border-radius: 1rem
+    z-index: 2
+    box-shadow: 0 0 1.25rem 0.5em #343434
+    padding-bottom: 5rem 
+    label
+        display: block
+        padding: 1rem 0
+        p
+            font-size: 1.1rem
+            font-weight: 700
+            font-family: 'Montserrat'
+            line-height: 1em
+    input
+        width: 100%
+        outline: none
+        padding: 10px
+        border: 1px solid #555555
+
+.popup-login-content
+    margin: auto
+    width: 50%
+
+
+.drag-to-each-block
+    min-height: 30px
+    width: 50px
+    background-color: red
+
+.justify-content-space-between
+    justify-content: space-between
+
+.before-form-some-contacts
+    ul
+        margin-bottom: 23px
+    span
+        position: relative
+        font-size: 1rem
+        letter-spacing: 3px
+        line-height: 30px
+        font-weight: 400
+        text-transform: uppercase
+        color: #555555
+        font-family: "Myriad Pro"
+        margin-bottom: 20px
+        &::before
+            content: ''
+            position: absolute
+            width: 15px
+            height: 21px
+            background-repeat: no-repeat
+            left: -35px
+            top: 2px
+    li
+        font-size: 12px
+        line-height: 20px
+        color: #555555
+        font-weight: 400
+        font-family: "Roboto Slab"
+
+.address:before
+    background-image: url(../img/fa-map-marker.png)
+
+.hotline:before
+    background-image: url(../img/fa-mobile-phone.png)
+
+.e-mail:before
+    background-image: url(../img/fa-envelope-o.png)
+
+.form form 
+    input,
+    textarea,
+    button
+        outline: none
+        padding: 1.1rem
+        border: 1px solid #555555
+        font-size: 12px
+        line-height: 20px
+        text-transform: uppercase
+        color: #555555
+        font-weight: 400
+        font-family: "Roboto Slab"
+        background-color: #fff
+        margin-bottom: 20px
+        &:focus
+            border: 1px solid #c0301c
+
+.contact-details-message
+    margin: 0 !important
+        
+
+.text-center-info-adaptive
+    text-align: center
+    +media(992)
+        text-align: left
+
+footer
+    p
+        font-size: 12px
+        line-height: 20px
+        text-transform: uppercase
+        color: #ffffff
+        font-weight: 400
+        font-family: "Roboto Slab"
+        margin: 0
+
+footer 
+    hr
+        width: 50px
+        margin: auto
+        border: 0
+        border: 2px solid #fff
+        opacity: 1
+        margin-bottom: 30px
+
+.footer-wrap
+    padding: 100px 0
+.sociality
+    column-gap: 13px
+    margin-bottom: 30px
+
+.sociality-icons
+    width: 36px
+    height: 36px
+    background: url(../img/fa-twitter.png)
+    background-position: center
+    background-repeat: no-repeat
+    border-radius: 50%
+    background-color: #c0301c
+    border: 2px solid #ffffff
+
+.partners-slider
+    overflow: hidden
+    max-width: 900px
+    align-items: center
+    margin-bottom: 65px
+
+.content-slider-infinity 
+    img 
+        width: 263px
+        height: 250px

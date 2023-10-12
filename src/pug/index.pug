@@ -1,0 +1,353 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet", href="css/styles.css")
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/myriad-pro" rel="stylesheet">
+                
+    body 
+        include components/mixins
+
+                
+        .overflow-hidden
+            .popup-login-outline#login-popup
+                .popup-login 
+                    .popup-login-content
+                        form(action="")
+                            h2.title-text-line.text-center LOGIN
+                            label(for="") 
+                                p LOGIN
+                                input(type="text" placeholder="LOGIN")
+                        .drag-n-drop-password
+                            .row.g-3
+                                .col-2
+                                    .numbers(draggable = "true") 1
+                                .col-2
+                                    .numbers(draggable = "true") 2
+                                .col-2
+                                    .numbers(draggable = "true") 3
+                                .col-2
+                                    .numbers(draggable = "true") 4
+                                .col-2
+                                    .numbers(draggable = "true") 5
+                                .col-2
+                                    .numbers(draggable = "true") 6
+                            .drag-to-blocks
+                                .row
+                                    .col-2
+                                        .drag-to-each-block
+                                    .col-2
+                                        .drag-to-each-block
+                                    .col-2
+                                        .drag-to-each-block
+                                    .col-2
+                                        .drag-to-each-block
+                                    .col-2
+                                        .drag-to-each-block
+                                    .col-2
+                                        .drag-to-each-block
+                            button#check Log in
+
+            header#home.parallax-header.relative 
+                .container
+                    .navigation.header-line.text-white.relative
+                        .row.align-items-baseline
+                            .burger 
+                            .col-2.logo 
+                                span Startup
+                            .col-10#navH.header-navigation.d-lg-flex.d-md-flex.justify-content-end
+                                nav
+                                    ul.menu-nav.d-flex.justify-content-between
+                                        li
+                                            a(href="#home") Home
+                                        li
+                                            a(href="#services") Services
+                                        li
+                                            a(href="#about") About
+                                        li
+                                            a(href="#works") Works
+                                        li
+                                            a(href="#blog") Blog
+                                        li
+                                            a(href="#clients") Clients
+                                        li
+                                            a(href="#support") Contact
+                    .w-100.text-center.text-header.text-white.animated-element 
+                        h1#title Welcome to STARTUP
+                        p Your Favourite Creative Agency Template
+                        a(href="#")#logBtn.button-white.text-center.text-white Get Started
+            main 
+                .container
+                    .services.animated-element#services.text-center.sm-containers
+                        h2.title-text-line Services
+                        p We offer ipsum dolor sit amet, consetetur sadipscing elitr amet
+                        .row.align-items-baselineanimated-element.animate-right-to-left.justify-content-center 
+                            .col-lg-4.col-md-6 
+                                +cards(cardsInfo.font)
+                            .col-lg-4.col-md-6#hacksite 
+                                +cards(cardsInfo.code)
+                            .col-lg-4.col-md-6 
+                                +cards(cardsInfo.support)
+                .container.about-us-cont
+                    .about-us.animated-element#about.text-center.sm-containers.container
+                        h2.title-text-line About us
+                        p Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+                        .row.align-items-baseline
+                            .col-lg-6.col-sm-12.text-about-padding-none.animate-left-to-right 
+                                p.text-left  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirmod tempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos et accusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Lorem ipsum dolor sit amet. Lorem ipsum eat.
+                            .col-lg-6.col-sm-12.text-about-padding-none.animate-right-to-left 
+                                p.text-left Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sediam nonumy eirtempor invidunt ut labore et dolore aliquyam erat, sed diam voluptua. At vero eos eaccusam et justo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor et dolore aliquyam erat. Loreipsum dolor sit amet. Lorem ipsum dolor et.
+
+                        .workers.carousel.infinity-slider
+                            .slider-blocks
+                                .blocks-infinity-slider.w-100.relative
+                                    .content-slider-infinity.text-center
+                                        img(src="../img/man1.png", alt="")
+                                        span.title-block Md. Khalil Uddin
+                                        p.paragraph-text Head of Ideas
+                                    .content-slider-infinity.text-center
+                                        img(src="../img/man2.png", alt="")
+                                        span.title-block Rubel Miah
+                                        p.paragraph-text Lead WordPress Developer
+                                    .content-slider-infinity.text-center
+                                        img(src="../img/man3.png", alt="")
+                                        span.title-block Shamim Mia
+                                        p.paragraph-text Sr. Web Developer
+                                    .content-slider-infinity.text-center
+                                        img(src="../img/man4.png", alt="")
+                                        span.title-block John Doe
+                                        p.paragraph-text Front-end Developer
+                                    .content-slider-infinity.text-center
+                                        img(src="../img/man.jfif", alt="")
+                                        span.title-block John Doe
+                                        p.paragraph-text Front-end Developer
+                                    .content-slider-infinity.text-center
+                                        img(src="../img/woman.jfif", alt="")
+                                        span.title-block John Doe
+                                        p.paragraph-text Front-end Developer
+                               
+                            .control
+                                .control-slide-left
+                                .control-slide-right
+
+                .container
+                    #works.works.animated-element.sm-containers
+                        h2.title-text-line.text-center Latest Works
+                        ul.d-flex.justify-content-center
+                            li
+                                span.filter-button(data-filter='all') All
+                            li
+                                span.filter-button(data-filter='branding') Branding
+                            li
+                                span.filter-button(data-filter='design') Design
+                            li
+                                span.filter-button(data-filter='development') Development
+                            li
+                                span.filter-button(data-filter='strategy') Strategy
+                    .gallery
+                        .row.g-4.justify-content-center
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='branding')
+                                img(src='img/gallery-1.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='strategy')
+                                img(src='img/gallery-2.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='strategy')
+                                img(src='img/gallery-3.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='branding design development')
+                                img(src='img/gallery-4.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='development')
+                                img(src='img/gallery-5.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='branding design')
+                                img(src='img/gallery-6.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='strategy')
+                                img(src='img/gallery-7.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='design')
+                                img(src='img/gallery-8.png' alt='')
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='development')
+                                img(src='img/gallery-9.png' alt='')
+                .support.animated-element.text-center.parallax-header
+                    h2  Do you like OUR WORK so far? 
+                        br
+                        | Let's talk about YOUR PROJECT! 
+                    a(href="#contact-form").button-white.text-center.text-white Get in Touch
+                .container
+                    
+                    .blog-posts.animated-element#blog.text-center.sm-containers 
+                        h2.title-text-line Recent blog posts
+                        p Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+                        .row.m-0.g-5.animate-right-to-left 
+                            .col-lg-4.col-sm-12.img-p-row 
+                                img(src="img/blog-posts1.png", alt="")          
+                            .col-lg-8.col-sm-12.blog-blocks-guttern
+                                .d-flex
+                                    .date 
+                                        span 
+                                            | 18 
+                                            br
+                                            span Oct
+                                    .title-blog.text-align-left
+                                        h3 Startup ideas needs to be funded 
+                                        p 
+                                            | By 
+                                            span Khalil 
+                                            | Uddin in 
+                                            span Development
+                                .blog-description
+                                    p.text-align-left Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
+                                    span#read-more Read more
+                        
+                        .row.m-0.g-5.animate-left-to-right 
+                            .col-lg-4.col-sm-12.img-p-row 
+                                img(src="img/blog-posts2.png", alt="")
+                            .col-lg-8.col-sm-12.blog-blocks-guttern
+                                .d-flex
+                                    .date 
+                                        span 
+                                            | 18 
+                                            br
+                                            span Oct
+                                    .title-blog.text-align-left
+                                        h3 Startup ideas needs to be funded 
+                                        p 
+                                            | By 
+                                            span Khalil 
+                                            | Uddin in 
+                                            span Development
+                                .blog-description
+                                    p.text-align-left Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
+                                    span Read more
+                
+                .companies#clients 
+                    .partners-slider.d-flex.justify-content-space-between.container
+                        .partner
+                            img(src="img/partners1.png", alt="")
+                        .partner
+                            img(src="img/partners2.png", alt="")
+                        .partner
+                            img(src="img/partners3.png", alt="")
+                        .partner
+                            img(src="img/partners4.png", alt="")
+                        .partner
+                            img(src="img/partners5.png", alt="")
+
+            
+                    .review-slider.text-center.animate-left-to-right  
+                        .review.active 
+                            p Hvaing placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum”
+                            span John Doe, Google Inc.
+                        .review 
+                            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem maxime ducimus quia, excepturi error, sit debitis ab vitae laboriosam dicta beatae sunt non deleniti quasi cumque ex cupiditate molestiae.
+                            span Khalil Uddin, Web Developer 
+                        .review 
+                            p Veniam, tempore. Repudiandae molestiae quas, voluptate ipsa, inventore harum suscipit repellendus tempora consectetur, incidunt labore. Neque est deserunt, molestias nisi porro tempora lorem super ipsum!
+                            span Rubel Miah, Head of Ideas
+                    .control-review-slider.d-flex
+                        .slider-dot.active 
+                        .slider-dot 
+                        .slider-dot 
+                .container
+                    .form-support.animated-element#support.sm-containers  
+                        h2.title-text-line.text-center Get in touch
+                        p.text-center Lorem ipsum dolor sit amet, consetetur sadipscing elitr amet
+                        .row.g-4 
+                            .col-lg-4.col-md-12
+                                .before-form-some-contacts
+                                    ul.text-center-info-adaptive
+                                        li 
+                                            span.address Address
+                                        li 312, 7th Ave, New York
+                                        li NY 101200, United States of America
+                                    ul.text-center-info-adaptive
+                                        li
+                                            span.hotline Hotline (24x7)
+                                            li +65 0052 300, +65 88251 210
+                                            li +88 01723 511 340
+                                    ul.text-center-info-adaptive
+                                        li
+                                            span.e-mail E-mail
+                                            li shapedtheme@gmail.com
+                                            li khalilkode@gmail.com
+                            .col-lg-8.col-md-12.form
+                                form#contact-form
+                                    .row.g-md-0.g-lg-5.g-sm-0
+                                        .col-lg-6
+                                            input#name.w-100(type='text' placeholder='Your name')
+                                        .col-lg-6
+                                            input#email.w-100(type='email' placeholder='Your E-mail')
+                                    .row.g-md-0.g-lg-5.g-sm-0
+                                        .col-lg-6
+                                            input#subject.w-100(type='text' placeholder='Your subject')
+                                        .col-lg-6
+                                            input#company.w-100(type='text' placeholder='Company name')
+                                    .row.g-md-0.g-lg-5.g-sm-0
+                                        .col-12
+                                            textarea#message.w-100(name='message' cols='30' rows='10' placeholder='Write your message')
+                                    .row.g-md-0.g-lg-5.g-sm-0.d-flex.align-items-baseline
+                                        .col-lg-4.col-md-12
+                                            button.w-100(type='submit') Send message
+                                        .col-lg-8.col-md-12.text-center
+                                            p.contact-details-message * We’ll contact you as soon as possible. We don’t reply on Monday.
+        #confirmation-popup.popup.popup-menu-user-data
+            .popup-body
+                h2.title-text-line.text-center Введені дані
+                .content-popup
+                    p
+                        strong YOUR NAME: <br>
+                        span#popup-name
+                    p
+                        strong YOUR E-MAIL: <br> 
+                        span#popup-email
+                    p
+                        strong YOUR SUBJECT: <br>
+                        span#popup-subject
+                    p
+                        strong COMPANY NAME: <br>
+                        span#popup-company
+                    p
+                        strong YOUR MESSAGE: <br>
+                        span#popup-message
+                    .d-flex
+                        button#accept-button accept
+                        button#reject-button decline
+
+
+
+
+        .container
+            .fixed-100
+                .row.m-0.g-5.popup-blog
+                    .col-lg-4.col-sm-12.img-p-row 
+                        img(src="img/blog-posts1.png", alt="")          
+                    .col-lg-8.col-sm-12.blog-blocks-guttern
+                        .d-flex.date-title
+                            .date 
+                                span 
+                                    | 18 
+                                    br
+                                    span Oct
+                            .title-blog.text-align-left
+                                h3 Startup ideas needs to be funded 
+                                p 
+                                    | By 
+                                    span Khalil 
+                                    | Uddin in 
+                                    span Development
+                        .blog-description
+                            p.text-align-left Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam temporibus eveniet magni possimus fuga tenetur consequatur nulla, eius deleniti voluptatum repellat rerum voluptate, adipisci, fugit beatae nostrum. Error molestiae earum necessitatibus magni aut, id possimus blanditiis nisi, nihil dignissimos facilis illo accusantium cupiditate eos, officiis nobis. Provident quis cum eum voluptates sed voluptatibus, magni omnis eveniet in ab obcaecati commodi dolore unde, est, ipsum officiis neque excepturi hic eius dignissimos odio? Assumenda vel nemo, accusamus impedit ab similique laudantium enim non dolor tempora quibusdam explicabo amet culpa libero dolorum quis a ducimus sint inventore! Illo voluptate ipsa similique asperiores sit iste sint, sunt iusto quis nobis in assumenda inventore consequatur velit consequuntur quam quos quia? Vero placeat veritatis minima quis, odit quidem fuga repellat iure totam consequatur asperiores. Obcaecati incidunt enim voluptates natus cumque sit officia voluptatibus aperiam labore! Saepe harum, libero tempora accusamus veniam expedita sint blanditiis. Rerum ea accusantium quaerat eaque tenetur soluta. Temporibus nam praesentium nobis, aliquid commodi porro repellat doloribus voluptas sit cumque voluptate nemo aspernatur consequuntur amet omnis asperiores beatae, quisquam saepe. Ducimus accusantium repellendus maxime earum aperiam obcaecati recusandae rerum autem tempora suscipit perferendis et labore in nisi nemo est repudiandae corrupti, ipsam quisquam aspernatur. Tempora magni asperiores dignissimos ab est, facilis earum ex autem nulla, reprehenderit inventore velit maxime modi provident doloribus tenetur distinctio minima, quibusdam temporibus. Iusto veritatis voluptates error commodi enim ipsa sapiente reprehenderit ipsum aliquam perferendis dolore sed praesentium magni eaque at soluta, velit quis. Necessitatibus blanditiis mollitia quis asperiores?
+                            span#blogClose Close 
+        footer 
+            .footer-wrap
+                .container.text-center
+                    .row.sociality.justify-content-center 
+                        .col-3.sociality-icons 
+                        .col-3.sociality-icons 
+                        .col-3.sociality-icons 
+                        .col-3.sociality-icons 
+                    hr
+                    p &copy 2015 Startup, Designed by ShapedTheme
+        script(src="js/scripts.js") 
