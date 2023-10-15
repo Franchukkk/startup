@@ -1,5 +1,8 @@
-const header = document.querySelector("header")
+const header = document.querySelector("header"),
+  headerLine = document.querySelector(".header-line")
 
+
+  
 function updateHeaderHeight() {
   const windowInnerHeight = window.innerHeight
   header.style.height = `${windowInnerHeight}px`
@@ -8,7 +11,6 @@ function updateHeaderHeight() {
 updateHeaderHeight()
 
 window.addEventListener("resize", updateHeaderHeight)
-
 
 
 var headerNavigation = document.querySelector('#navH')
@@ -27,6 +29,19 @@ burgerBtn.onclick = function () {
   headerNavigation.classList.toggle("burger-active")
   burgerBtn.classList.toggle("burger-btn-active")
 }
+
+const burgerMenuActiveLi = document.querySelectorAll(".menu-nav li"),
+  headerNavAct = document.querySelector(".burger-active")
+
+function removeBurgerAct() {
+  burgerBtn.click()
+}
+
+burgerMenuActiveLi.forEach((menuItem) => {
+  menuItem.addEventListener("click", removeBurgerAct)
+})
+
+
 
 checkScreenWidth()
 
@@ -50,6 +65,22 @@ function paralaxOnMouseMove(event) {
     parallaxHeader.style.backgroundPositionY = `${50 - backgroundPositionY}%`
   })
 }
+
+const filterBtns = document.querySelectorAll(".filter-button")
+
+function click(e) {
+  filterBtns.forEach((btn) => {
+    btn.classList.remove("btn-red")
+  })
+
+  e.target.classList.add("btn-red")
+}
+
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", click)
+})
+
+
 
 
 document.addEventListener('mousemove', paralaxOnMouseMove)
@@ -140,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 const reviews = document.querySelectorAll('.review'),
   sliderDots = document.querySelectorAll('.slider-dot'),
-  intervalDuration = 5000
+  intervalDuration = 2000
 let currentIndex = 0
 
 function showReview(index) {
@@ -292,75 +323,75 @@ function getLoginFromSession() {
   return sessionStorage.getItem("loggedInUser")
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  let numbersDrag = document.querySelectorAll(".numbers"),
-    basket = document.querySelectorAll(".drag-to-each-block"),
-    checkButton = document.getElementById("check")
+// document.addEventListener("DOMContentLoaded", function () {
+//   let numbersDrag = document.querySelectorAll(".numbers"),
+//     basket = document.querySelectorAll(".drag-to-each-block"),
+//     checkButton = document.getElementById("check")
 
-  const loggedInUser = getLoginFromSession()
-  if (loggedInUser) {
-    title.innerText = loggedInUser + " ,Welcome Back to STARTUP"
-    logBtn.style.display = "none"
-  }
+//   const loggedInUser = getLoginFromSession()
+//   if (loggedInUser) {
+//     title.innerText = loggedInUser + " ,Welcome Back to STARTUP"
+//     logBtn.style.display = "none"
+//   }
 
-  numbersDrag.forEach((circle) => {
-    circle.addEventListener("dragstart", function (e) {
-      e.dataTransfer.setData("text", e.target.innerHTML)
-      setTimeout(() => {
-        this.style.opacity = 0
-      }, 0)
-    })
+//   numbersDrag.forEach((circle) => {
+//     circle.addEventListener("dragstart", function (e) {
+//       e.dataTransfer.setData("text", e.target.innerHTML)
+//       setTimeout(() => {
+//         this.style.opacity = 0
+//       }, 0)
+//     })
 
-    circle.addEventListener("dragend", function () {
-      this.style.opacity = "1"
-    })
-  })
+//     circle.addEventListener("dragend", function () {
+//       this.style.opacity = "1"
+//     })
+//   })
 
-  basket.forEach((basketItem) => {
-    basketItem.addEventListener("dragover", function (e) {
-      e.preventDefault()
-    })
+//   basket.forEach((basketItem) => {
+//     basketItem.addEventListener("dragover", function (e) {
+//       e.preventDefault()
+//     })
 
-    basketItem.addEventListener("drop", function (e) {
-      e.preventDefault()
-      const dataValue = e.dataTransfer.getData("text")
-      if (dataValue) {
-        const newItem = document.createElement("div")
-        newItem.classList.add("numbers")
-        newItem.textContent = dataValue
-        this.appendChild(newItem)
+//     basketItem.addEventListener("drop", function (e) {
+//       e.preventDefault()
+//       const dataValue = e.dataTransfer.getData("text")
+//       if (dataValue) {
+//         const newItem = document.createElement("div")
+//         newItem.classList.add("numbers")
+//         newItem.textContent = dataValue
+//         this.appendChild(newItem)
 
-        numbersDrag.forEach((circle) => {
-          if (circle.textContent === dataValue) {
-            circle.parentNode.removeChild(circle)
-          }
-        })
+//         numbersDrag.forEach((circle) => {
+//           if (circle.textContent === dataValue) {
+//             circle.parentNode.removeChild(circle)
+//           }
+//         })
 
-        if (dataValue === "123456") {
-          alert("Вітаю!")
-        }
-      }
-    })
-  })
+//         if (dataValue === "123456") {
+//           alert("Вітаю!")
+//         }
+//       }
+//     })
+//   })
 
-  checkButton.addEventListener("click", function () {
-    const basketNumbers = document.querySelectorAll(".drag-to-each-block .numbers")
-    const loginInput = document.querySelector(".popup-login-content input")
-    const login = loginInput.value
+// checkButton.addEventListener("click", function () {
+//     const basketNumbers = document.querySelectorAll(".drag-to-each-block .numbers")
+//     const loginInput = document.querySelector(".popup-login-content input")
+//     const login = loginInput.value
 
-    saveLoginToSession(login)
+//     saveLoginToSession(login)
 
-    const codeEntered = Array.from(basketNumbers).map((item) => item.textContent).join("")
+//     const codeEntered = Array.from(basketNumbers).map((item) => item.textContent).join("")
 
-    if (codeEntered === "123456") {
-      popup.style.display = "none"
-      title.innerText = login + " ,Welcome Back to STARTUP"
-      logBtn.style.display = "none"
-    } else {
-      alert("Password is wrong")
-    }
-  })
-})
+//     if (codeEntered === "123456") {
+//       popup.style.display = "none"
+//       title.innerText = login + " ,Welcome Back to STARTUP"
+//       logBtn.style.display = "none"
+//     } else {
+//       alert("Password is wrong")
+//     }
+//   })
+// })
 
 logBtn.onclick = function () {
   document.querySelector("#login-popup").style.display = "block"
@@ -579,10 +610,10 @@ function updateLayout() {
     } else if (window.innerWidth >= 768) {
       space = (blockSlider - (263 * 2))
       leftPosition += 263 + space
-    } else if (window.innerWidth < 768 ) {
+    } else if (window.innerWidth < 768) {
       space = (blockSlider - 263)
       leftPosition += blockSlider
-    } 
+    }
   })
 
   const leftButton = document.querySelector('.control-slide-left'),
@@ -603,7 +634,7 @@ function updateLayout() {
     let swipeX = touchEndX - touchStartX
 
     // довжина свайпу
-    const minSwipeLength = 25 // Ви можете налаштувати це значення
+    const minSwipeLength = 25
 
     if (swipeX > minSwipeLength) {
       // свайп вправо
@@ -618,7 +649,7 @@ function updateLayout() {
       // свайп вліво
       if (canClick) {
         canClick = false
-        rightButton.click() 
+        rightButton.click()
         setTimeout(() => {
           canClick = true
         }, 1000)
@@ -627,19 +658,19 @@ function updateLayout() {
   })
 
   leftButton.addEventListener('click', () => {
-    const FirstlastBlock = blocks[5],
+    const FirstlastBlock = blocks[4],
       newFirstCopy = FirstlastBlock.cloneNode(true)
     newFirstCopy.style.transition = "1s"
     newFirstCopy.style.left = -(263 + space) + "px"
     setTimeout(() => {
       if (window.innerWidth > 768) {
         newFirstCopy.style.left = 0
-      } else if (window.innerWidth > 575)  {
-        console.log(1);
+      } else if (window.innerWidth > 575) {
+        console.log(1)
         newFirstCopy.style.left = (blockSlider - 263) / 2 + "px"
         // newFirstCopy.style.left = 0
-      } else{
-        console.log(1);
+      } else {
+        console.log(1)
         // newFirstCopy.style.left = (blockSlider - 263) / 2 + "px"
         newFirstCopy.style.left = 0
       }
@@ -690,3 +721,162 @@ function updateLayout() {
 }
 
 document.addEventListener('DOMContentLoaded', updateLayout)
+
+
+
+
+function updateLayout1() {
+  let blocks1 = document.querySelectorAll('.partner')
+  const blockSlider1 = document.querySelector('.partners-slider').offsetWidth
+  let leftPosition1 = 0,
+    space1 = 0
+
+  if (window.innerWidth < 768 && window.innerWidth >= 576) {
+    leftPosition1 = 0
+  }
+
+  blocks1.forEach((block) => {
+    block.style.position = 'absolute'
+    block.style.left = `${leftPosition1}px`
+    if (window.innerWidth > 768) {
+      space1 = (blockSlider1 - (blocks1[0].getBoundingClientRect().width * 4)) / 3
+      leftPosition1 += blocks1[0].getBoundingClientRect().width + space1 
+    } else {
+      space1 = (blockSlider1 - (blocks1[0].getBoundingClientRect().width * 2)) / 1
+      leftPosition1 += blocks1[0].getBoundingClientRect().width + space1 
+    }
+  })
+
+  const leftButton1 = document.querySelector(".btn1"),
+    rightButton1 = document.querySelector(".btn2")
+  let canClick1 = true
+
+  rightButton1.addEventListener('click', () => {
+    if (canClick1) {
+      canClick1 = false
+      
+      const firstBlockToDeleteCopy1 = blocks1[0].cloneNode(true)
+      firstBlockToDeleteCopy1.classList.add("ss")
+      blocks1.forEach((block) => {
+        const currentLeft1 = parseInt(block.style.left, 10)
+        firstBlockToDeleteCopy1.style.left = currentLeft1 + "px"
+        const newLeft1 = currentLeft1 - (blocks1[0].getBoundingClientRect().width + space1)
+        block.style.left = `${newLeft1}px`
+      })
+      document.querySelector('.partners-slider').appendChild(firstBlockToDeleteCopy1)
+      
+      setTimeout(() => {
+        blocks1[0].remove()
+        blocks1 = document.querySelectorAll('.partner')
+        canClick1 = true
+      }, 1000)
+    }
+  })
+  
+  function autoChangeSlide() {
+    rightButton1.click()
+  }
+  
+  const autoSlideInterval = setInterval(autoChangeSlide, 2000)
+  window.addEventListener('resize', updateLayout1, autoChangeSlide)
+}
+document.addEventListener('DOMContentLoaded', updateLayout1)
+
+
+
+
+
+
+
+// let circles = document.querySelectorAll(".circles"),
+//   elementDragged = null,
+//   corX, corY
+
+// circles.forEach(circle => {
+
+//   circle.addEventListener("mousedown", function (e) {
+//     elementDragged = e.target
+//     corX = e.pageX - circle.getBoundingClientRect().x
+//     corY = e.pageY - circle.getBoundingClientRect().y
+//     elementDragged.style.position = "fixed"
+//     elementDragged.addEventListener("mousemove", move)
+//   })
+
+// })
+
+// function move(e) {
+//   if (elementDragged) {
+//     elementDragged.style.left = e.pageX - corX + "px"
+//     elementDragged.style.top = e.pageY - corY + "px"
+//   }
+// }
+
+// window.addEventListener("mouseup", function () {
+//   if (elementDragged) {
+//     elementDragged.removeEventListener("mousemove", move)
+//     elementDragged = null
+//   }
+// })
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  let draggedItem = null
+
+  document.addEventListener('mousedown', function (e) {
+    if (e.target.classList.contains('block')) {
+      draggedItem = e.target
+    }
+  })
+
+  document.addEventListener('mousemove', function (e) {
+    if (draggedItem) {
+      draggedItem.style.position = 'absolute'
+      draggedItem.style.left = e.clientX - draggedItem.offsetWidth / 2 + 'px'
+      draggedItem.style.top = e.clientY - draggedItem.offsetHeight / 2 + 'px'
+    }
+  })
+
+  document.addEventListener('mouseup', function (e) {
+    if (draggedItem) {
+      const dropzone = document.elementFromPoint(e.clientX, e.clientY)
+
+      if (dropzone && dropzone.classList.contains('dropzone')) {
+        // Перевірка, чи контейнер порожній
+        if (dropzone.children.length === 0) {
+          dropzone.appendChild(draggedItem)
+          draggedItem.style.position = 'static'
+        } else {
+          // Якщо контейнер не порожній, не дозволяти вставку
+          draggedItem.style.position = 'static'
+        }
+      } else {
+        draggedItem.style.position = 'static'
+      }
+
+      draggedItem = null
+    }
+  })
+
+  document.querySelector('#check').addEventListener('click', function () {
+    console.log(1)
+    const containers = document.querySelectorAll('.dropzone')
+    let sequence = ''
+
+    containers.forEach((container) => {
+      const block = container.querySelector('.block')
+      if (block) {
+        sequence += block.getAttribute('data-value')
+      }
+    })
+
+    if (sequence === '1234') {
+      title.innerText = "Admin, Welcome To Startup again"
+      popup.style.display = "none"
+      logBtn.remove()
+    } else {
+      alert(sequence)
+    }
+  })
+
+})

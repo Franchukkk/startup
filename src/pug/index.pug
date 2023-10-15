@@ -18,41 +18,32 @@ html(lang="en")
         .overflow-hidden
             .popup-login-outline#login-popup
                 .popup-login 
+                    h2 Hi! Enter your Admin Code
                     .popup-login-content
-                        form(action="")
-                            h2.title-text-line.text-center LOGIN
-                            label(for="") 
-                                p LOGIN
-                                input(type="text" placeholder="LOGIN")
-                        .drag-n-drop-password
-                            .row.g-3
-                                .col-2
-                                    .numbers(draggable = "true") 1
-                                .col-2
-                                    .numbers(draggable = "true") 2
-                                .col-2
-                                    .numbers(draggable = "true") 3
-                                .col-2
-                                    .numbers(draggable = "true") 4
-                                .col-2
-                                    .numbers(draggable = "true") 5
-                                .col-2
-                                    .numbers(draggable = "true") 6
-                            .drag-to-blocks
-                                .row
-                                    .col-2
-                                        .drag-to-each-block
-                                    .col-2
-                                        .drag-to-each-block
-                                    .col-2
-                                        .drag-to-each-block
-                                    .col-2
-                                        .drag-to-each-block
-                                    .col-2
-                                        .drag-to-each-block
-                                    .col-2
-                                        .drag-to-each-block
-                            button#check Log in
+                        .cont-drag.row
+                            .col-3 
+                                .block#block1(data-value="1") 1
+                            .col-3 
+                                .block#block2(data-value="2") 2
+                            .col-3 
+                                .block#block3(data-value="3") 3
+                            .col-3 
+                                .block#block4(data-value="4") 4
+                        .drop-zones
+                            .row
+                                .col-3 
+                                    .cont-drag
+                                        .dropzone#container1 
+                                .col-3 
+                                    .cont-drag
+                                        .dropzone#container2 
+                                .col-3 
+                                    .cont-drag
+                                        .dropzone#container3 
+                                .col-3 
+                                    .cont-drag
+                                        .dropzone#container4 
+                        button#check.check-log-in Log in
 
             header#home.parallax-header.relative 
                 .container
@@ -107,30 +98,90 @@ html(lang="en")
                         .workers.carousel.infinity-slider
                             .slider-blocks
                                 .blocks-infinity-slider.w-100.relative
-                                    .content-slider-infinity.text-center
+                                    .content-slider-infinity.text-center.relative
                                         img(src="../img/man1.png", alt="")
                                         span.title-block Md. Khalil Uddin
                                         p.paragraph-text Head of Ideas
-                                    .content-slider-infinity.text-center
+                                        .person-sociality 
+                                            ul
+                                                li 
+                                                    a(href="#").fb 
+                                                li 
+                                                    a(href="#").tw 
+                                                li 
+                                                    a(href="#").google 
+                                                li 
+                                                    a(href="#").in 
+                                    .content-slider-infinity.text-center.relative
                                         img(src="../img/man2.png", alt="")
                                         span.title-block Rubel Miah
                                         p.paragraph-text Lead WordPress Developer
-                                    .content-slider-infinity.text-center
+                                        .person-sociality 
+                                            ul
+                                                li 
+                                                    a(href="#").fb 
+                                                li 
+                                                    a(href="#").tw 
+                                                li 
+                                                    a(href="#").google 
+                                                li 
+                                                    a(href="#").in 
+                                    .content-slider-infinity.text-center.relative
                                         img(src="../img/man3.png", alt="")
                                         span.title-block Shamim Mia
                                         p.paragraph-text Sr. Web Developer
-                                    .content-slider-infinity.text-center
+                                        .person-sociality 
+                                            ul
+                                                li 
+                                                    a(href="#").fb 
+                                                li 
+                                                    a(href="#").tw 
+                                                li 
+                                                    a(href="#").google 
+                                                li 
+                                                    a(href="#").in 
+                                    .content-slider-infinity.text-center.relative
                                         img(src="../img/man4.png", alt="")
                                         span.title-block John Doe
                                         p.paragraph-text Front-end Developer
-                                    .content-slider-infinity.text-center
+                                        .person-sociality 
+                                            ul
+                                                li 
+                                                    a(href="#").fb 
+                                                li 
+                                                    a(href="#").tw 
+                                                li 
+                                                    a(href="#").google 
+                                                li 
+                                                    a(href="#").in 
+                                    .content-slider-infinity.text-center.relative
                                         img(src="../img/man.jfif", alt="")
                                         span.title-block John Doe
                                         p.paragraph-text Front-end Developer
-                                    .content-slider-infinity.text-center
+                                        .person-sociality 
+                                            ul
+                                                li 
+                                                    a(href="#").fb 
+                                                li 
+                                                    a(href="#").tw 
+                                                li 
+                                                    a(href="#").google 
+                                                li 
+                                                    a(href="#").in 
+                                    .content-slider-infinity.text-center.relative
                                         img(src="../img/woman.jfif", alt="")
                                         span.title-block John Doe
                                         p.paragraph-text Front-end Developer
+                                        .person-sociality 
+                                            ul
+                                                li 
+                                                    a(href="#").fb 
+                                                li 
+                                                    a(href="#").tw 
+                                                li 
+                                                    a(href="#").google 
+                                                li 
+                                                    a(href="#").in 
                                
                             .control
                                 .control-slide-left
@@ -151,25 +202,79 @@ html(lang="en")
                             li
                                 span.filter-button(data-filter='strategy') Strategy
                     .gallery
-                        .row.g-4.justify-content-center
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='branding')
+                        .row.g-4.justify-content-center.gallery-flex-gap
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='branding')
                                 img(src='img/gallery-1.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='strategy')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p branding
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='strategy')
                                 img(src='img/gallery-2.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='strategy')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p strategy
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='strategy')
                                 img(src='img/gallery-3.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='branding design development')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p strategy
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='branding design development')
                                 img(src='img/gallery-4.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='development')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p branding design development
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='development')
                                 img(src='img/gallery-5.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='branding design')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p development
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='branding design')
                                 img(src='img/gallery-6.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='strategy')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p branding design
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='strategy')
                                 img(src='img/gallery-7.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='design')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p strategy
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='design')
                                 img(src='img/gallery-8.png' alt='')
-                            .col-lg-4.col-md-6.col-sm-12.card-gallery(data-filter='development')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p design
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
+                            .col-lg-4.col-md-6.col-sm-12.card-gallery.relative(data-filter='development')
                                 img(src='img/gallery-9.png' alt='')
+                                .gallery-block-about 
+                                    h3 Hair Dresser
+                                    p development
+                                    .d-flex.view-buy
+                                        a(href="#") View 
+                                        a(href="#") Buy
                 .support.animated-element.text-center.parallax-header
                     h2  Do you like OUR WORK so far? 
                         br
@@ -219,21 +324,25 @@ html(lang="en")
                                             | Uddin in 
                                             span Development
                                 .blog-description
-                                    p.text-align-left Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
+                                    p.text-align-left#innerTextBlog Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod teduntlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et erebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit am Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidulabore et dolore aliquyam erat, sed diam 
                                     span Read more
                 
                 .companies#clients 
-                    .partners-slider.d-flex.justify-content-space-between.container
-                        .partner
-                            img(src="img/partners1.png", alt="")
-                        .partner
-                            img(src="img/partners2.png", alt="")
-                        .partner
-                            img(src="img/partners3.png", alt="")
-                        .partner
-                            img(src="img/partners4.png", alt="")
-                        .partner
-                            img(src="img/partners5.png", alt="")
+                    .overflow-width.animate-right-to-left
+                        .partners-slider.d-flex.justify-content-space-between.container.relative
+                            .partner
+                                img(src="img/partners1.png", alt="")
+                            .partner
+                                img(src="img/partners2.png", alt="")
+                            .partner
+                                img(src="img/partners3.png", alt="")
+                            .partner
+                                img(src="img/partners4.png", alt="")
+                            .partner
+                                img(src="img/partners5.png", alt="")
+                        .btnstest 
+                            p.btn1 
+                            p.btn2 
 
             
                     .review-slider.text-center.animate-left-to-right  
@@ -337,7 +446,7 @@ html(lang="en")
                                     span Khalil 
                                     | Uddin in 
                                     span Development
-                        .blog-description
+                        .blog-description.blog-description-all
                             p.text-align-left Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam temporibus eveniet magni possimus fuga tenetur consequatur nulla, eius deleniti voluptatum repellat rerum voluptate, adipisci, fugit beatae nostrum. Error molestiae earum necessitatibus magni aut, id possimus blanditiis nisi, nihil dignissimos facilis illo accusantium cupiditate eos, officiis nobis. Provident quis cum eum voluptates sed voluptatibus, magni omnis eveniet in ab obcaecati commodi dolore unde, est, ipsum officiis neque excepturi hic eius dignissimos odio? Assumenda vel nemo, accusamus impedit ab similique laudantium enim non dolor tempora quibusdam explicabo amet culpa libero dolorum quis a ducimus sint inventore! Illo voluptate ipsa similique asperiores sit iste sint, sunt iusto quis nobis in assumenda inventore consequatur velit consequuntur quam quos quia? Vero placeat veritatis minima quis, odit quidem fuga repellat iure totam consequatur asperiores. Obcaecati incidunt enim voluptates natus cumque sit officia voluptatibus aperiam labore! Saepe harum, libero tempora accusamus veniam expedita sint blanditiis. Rerum ea accusantium quaerat eaque tenetur soluta. Temporibus nam praesentium nobis, aliquid commodi porro repellat doloribus voluptas sit cumque voluptate nemo aspernatur consequuntur amet omnis asperiores beatae, quisquam saepe. Ducimus accusantium repellendus maxime earum aperiam obcaecati recusandae rerum autem tempora suscipit perferendis et labore in nisi nemo est repudiandae corrupti, ipsam quisquam aspernatur. Tempora magni asperiores dignissimos ab est, facilis earum ex autem nulla, reprehenderit inventore velit maxime modi provident doloribus tenetur distinctio minima, quibusdam temporibus. Iusto veritatis voluptates error commodi enim ipsa sapiente reprehenderit ipsum aliquam perferendis dolore sed praesentium magni eaque at soluta, velit quis. Necessitatibus blanditiis mollitia quis asperiores?
                             span#blogClose Close 
         footer 
