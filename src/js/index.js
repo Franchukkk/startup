@@ -1,8 +1,9 @@
+
 const header = document.querySelector("header"),
   headerLine = document.querySelector(".header-line")
 
 
-  
+
 function updateHeaderHeight() {
   const windowInnerHeight = window.innerHeight
   header.style.height = `${windowInnerHeight}px`
@@ -113,6 +114,7 @@ hacksite.addEventListener("click", function (evt) {
 let closeBlog = document.querySelector("#blogClose"),
   blogPop = document.querySelector(".fixed-100"),
   openBlog = document.querySelector("#read-more")
+
 openBlog.onclick = function () {
   blogPop.style.display = "flex"
 }
@@ -726,8 +728,10 @@ document.addEventListener('DOMContentLoaded', updateLayout)
 
 
 function updateLayout1() {
+  
   let blocks1 = document.querySelectorAll('.partner')
   const blockSlider1 = document.querySelector('.partners-slider').offsetWidth
+  
   let leftPosition1 = 0,
     space1 = 0
 
@@ -740,10 +744,10 @@ function updateLayout1() {
     block.style.left = `${leftPosition1}px`
     if (window.innerWidth > 768) {
       space1 = (blockSlider1 - (blocks1[0].getBoundingClientRect().width * 4)) / 3
-      leftPosition1 += blocks1[0].getBoundingClientRect().width + space1 
+      leftPosition1 += blocks1[0].getBoundingClientRect().width + space1
     } else {
       space1 = (blockSlider1 - (blocks1[0].getBoundingClientRect().width * 2)) / 1
-      leftPosition1 += blocks1[0].getBoundingClientRect().width + space1 
+      leftPosition1 += blocks1[0].getBoundingClientRect().width + space1
     }
   })
 
@@ -754,7 +758,7 @@ function updateLayout1() {
   rightButton1.addEventListener('click', () => {
     if (canClick1) {
       canClick1 = false
-      
+
       const firstBlockToDeleteCopy1 = blocks1[0].cloneNode(true)
       firstBlockToDeleteCopy1.classList.add("ss")
       blocks1.forEach((block) => {
@@ -764,7 +768,7 @@ function updateLayout1() {
         block.style.left = `${newLeft1}px`
       })
       document.querySelector('.partners-slider').appendChild(firstBlockToDeleteCopy1)
-      
+
       setTimeout(() => {
         blocks1[0].remove()
         blocks1 = document.querySelectorAll('.partner')
@@ -772,13 +776,19 @@ function updateLayout1() {
       }, 1000)
     }
   })
-  
+
   function autoChangeSlide() {
     rightButton1.click()
   }
-  
-  const autoSlideInterval = setInterval(autoChangeSlide, 2000)
-  window.addEventListener('resize', updateLayout1, autoChangeSlide)
+
+  let autoSlideInterval = setInterval(autoChangeSlide, 2000)
+  window.addEventListener('resize', updateLayout1, autoChangeSlide);
+  document.querySelector('.partners-slider').addEventListener("mouseover", () => {
+    clearInterval(autoSlideInterval)
+  })
+  document.querySelector('.partners-slider').addEventListener('mouseout', () => {
+    autoSlideInterval = setInterval(autoChangeSlide, 2000)
+  })
 }
 document.addEventListener('DOMContentLoaded', updateLayout1)
 
@@ -842,7 +852,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const dropzone = document.elementFromPoint(e.clientX, e.clientY)
 
       if (dropzone && dropzone.classList.contains('dropzone')) {
-        // Перевірка, чи контейнер порожній
+        // Перевірка чи контейнер порожній
         if (dropzone.children.length === 0) {
           dropzone.appendChild(draggedItem)
           draggedItem.style.position = 'static'
