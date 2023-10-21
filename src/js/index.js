@@ -1,4 +1,3 @@
-
 const header = document.querySelector("header"),
   headerLine = document.querySelector(".header-line")
 
@@ -67,19 +66,19 @@ function paralaxOnMouseMove(event) {
   })
 }
 
-const filterBtns = document.querySelectorAll(".filter-button")
+// const filterBtns = document.querySelectorAll(".filter-button")
 
-function click(e) {
-  filterBtns.forEach((btn) => {
-    btn.classList.remove("btn-red")
-  })
+// function click(e) {
+//   filterBtns.forEach((btn) => {
+//     btn.classList.remove("btn-red")
+//   })
 
-  e.target.classList.add("btn-red")
-}
+//   e.target.classList.add("btn-red")
+// }
 
-filterBtns.forEach((btn) => {
-  btn.addEventListener("click", click)
-})
+// filterBtns.forEach((btn) => {
+//   btn.addEventListener("click", click)
+// })
 
 
 
@@ -113,7 +112,19 @@ hacksite.addEventListener("click", function (evt) {
 
 let closeBlog = document.querySelector("#blogClose"),
   blogPop = document.querySelector(".fixed-100"),
-  openBlog = document.querySelector("#read-more")
+  openBlog = document.querySelector("#read-more"),
+  popupBlog = document.querySelector(".popup-blog")
+
+
+
+
+blogPop.addEventListener("click", (e) => {
+  if (e.target === blogPop) {
+    closeBlog.click()
+  }
+})
+
+
 
 openBlog.onclick = function () {
   blogPop.style.display = "flex"
@@ -122,7 +133,6 @@ openBlog.onclick = function () {
 closeBlog.addEventListener("click", function () {
   blogPop.style.display = "none"
 })
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -207,8 +217,9 @@ reviews.forEach((review, index) => {
 })
 
 let interval = setInterval(showNextReview, intervalDuration)
-
 document.addEventListener("DOMContentLoaded", function () {
+  clearInterval(interval)
+  interval = setInterval(showNextReview, intervalDuration)
   const filterButtons = document.querySelectorAll(".filter-button")
   const galleryCards = document.querySelectorAll(".gallery .col-lg-4")
   const filterKey = "selectedFilter"
@@ -221,6 +232,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
     localStorage.setItem(filterKey, filterValue)
+
+    // Видалення класу 'btn-red' з усіх кнопок
+    filterButtons.forEach((button) => {
+      button.classList.remove("btn-red")
+    })
+
+    // Додавання класу 'btn-red' до вибраної кнопки
+    const selectedButton = document.querySelector(`[data-filter="${filterValue}"]`)
+    if (selectedButton) {
+      selectedButton.classList.add("btn-red")
+    }
   }
 
   const savedFilter = localStorage.getItem(filterKey)
@@ -236,6 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
   })
 })
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.getElementById("contact-form")
@@ -292,6 +315,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       confirmationPopup.style.display = "none"
     })
+    document.querySelector(".popup-menu-user-data").addEventListener("click", (e) => {
+      if (e.target === document.querySelector(".popup-menu-user-data")) {
+        rejectButton.click()
+      }
+    })
   })
 
   nameInput.value = localStorage.getItem("name") || ""
@@ -304,6 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
   closePopup.addEventListener("click", function () {
     confirmationPopup.style.display = "none"
   })
+
 })
 
 
@@ -398,6 +427,13 @@ function getLoginFromSession() {
 logBtn.onclick = function () {
   document.querySelector("#login-popup").style.display = "block"
 }
+
+popup.addEventListener("click", (event) => {
+  if (event.target === popup) {
+    popup.style.display = "none"
+  }
+})
+
 
 // document.addEventListener('DOMContentLoaded', () => {
 
@@ -719,7 +755,17 @@ function updateLayout() {
     }
   })
 
-  window.addEventListener('resize', updateLayout)
+  let resizeTimeout
+
+  function onResize() {
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(function () {
+      updateLayout()
+    }, 1000)
+  }
+
+  window.addEventListener('resize', onResize)
+
 }
 
 document.addEventListener('DOMContentLoaded', updateLayout)
@@ -728,10 +774,10 @@ document.addEventListener('DOMContentLoaded', updateLayout)
 
 
 function updateLayout1() {
-  
+
   let blocks1 = document.querySelectorAll('.partner')
   const blockSlider1 = document.querySelector('.partners-slider').offsetWidth
-  
+
   let leftPosition1 = 0,
     space1 = 0
 
@@ -782,7 +828,13 @@ function updateLayout1() {
   }
 
   let autoSlideInterval = setInterval(autoChangeSlide, 2000)
-  window.addEventListener('resize', updateLayout1, autoChangeSlide);
+  let resizeTimer // Змінна для збереження таймеру
+
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(updateLayout1, 1000)
+  })
+
   document.querySelector('.partners-slider').addEventListener("mouseover", () => {
     clearInterval(autoSlideInterval)
   })
@@ -792,6 +844,15 @@ function updateLayout1() {
 }
 document.addEventListener('DOMContentLoaded', updateLayout1)
 
+let resizeTimeout
+
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout) 
+  resizeTimeout = setTimeout(() => {
+    clearInterval(autoSlideInterval)
+    clearInterval(interval)
+  }, 1000) 
+})
 
 
 
