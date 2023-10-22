@@ -11,9 +11,9 @@ if (products) {
             let dataValue = btn.dataset.value
             let product = products[dataValue]
 
-            // Перевірка, чи товар вже є у кошику
+            // Перевірка чи товар вже є у кошику
             if (cart[dataValue]) {
-                // Якщо товар вже є у кошику, збільшуємо кількість на 1 та підраховуємо загальну ціну
+                // Якщо товар вже є у кошику збільшуємо кількість на 1 та підраховуємо загальну ціну
                 cart[dataValue].quantity++
                 cart[dataValue].totalPrice += product.price
             } else {
@@ -149,11 +149,11 @@ if (products) {
     }
 
     function calculateTotalQuantity(cart) {
-        let totalQuantity = 0;
+        let totalQuantity = 0
         for (let key in cart) {
-            totalQuantity += cart[key].quantity;
+            totalQuantity += cart[key].quantity
         }
-        return totalQuantity;
+        return totalQuantity
     }
 
     // Виклик функції оновлення таблиці кошика
@@ -168,5 +168,23 @@ if (products) {
             busketOut.classList.toggle("d-block")
         }
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let svg = document.querySelector(".busket-ico svg");
+
+        if (svg) {
+            window.addEventListener("scroll", () => {
+                console.log(svg);
+                if (window.scrollY < document.querySelector("header").getBoundingClientRect().height) {
+                    svg.style.fill = "#fff";
+                } else {
+                    svg.style.fill = "#000";
+                }
+            });
+        }else {
+            console.log(12);
+        }
+    });
+
 
 }
