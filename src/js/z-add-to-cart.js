@@ -2,10 +2,16 @@ if (products) {
     let buyBtns = document.querySelectorAll(".add-to-cart-js"),
         productsTable = document.querySelector(".table-products-basket"),
         cart = {}, // Об'єкт для відстеження товарів у кошику
-        busketIco = document.querySelector(".busket-ico-counter")
+        busketIco = document.querySelector(".busket-ico-counter"),
+        productAdded = document.querySelector(".product-added-popup-mini")
 
     buyBtns.forEach(function (btn) {
         btn.addEventListener("click", (e) => {
+            productAdded.classList.add("product-added")
+            setTimeout(() => {
+                productAdded.classList.remove("product-added")
+            }, 1000)
+
             busketIco.innerHTML = //тут має бути вся кількість замовлених одиниць товарів
                 e.preventDefault()
             let dataValue = btn.dataset.value
@@ -17,7 +23,7 @@ if (products) {
                 cart[dataValue].quantity++
                 cart[dataValue].totalPrice += product.price
             } else {
-                // Якщо товару немає у кошику, додаємо його з початковими значеннями
+                // Якщо товару немає у кошику - додаємо його з початковими значеннями
                 cart[dataValue] = {
                     quantity: 1,
                     totalPrice: product.price,
@@ -70,7 +76,7 @@ if (products) {
         })
     })
 
-    // Функція для обчислення загальної ціни кошика
+    // Функція для обчислення загальної ціни товарів
     function calculateTotalCartPrice() {
         let totalCartPrice = 0
         for (let key in cart) {
@@ -170,21 +176,21 @@ if (products) {
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        let svg = document.querySelector(".busket-ico svg");
+        let svg = document.querySelector(".busket-ico svg")
 
         if (svg) {
             window.addEventListener("scroll", () => {
-                console.log(svg);
+                console.log(svg)
                 if (window.scrollY < document.querySelector("header").getBoundingClientRect().height) {
-                    svg.style.fill = "#fff";
+                    svg.style.fill = "#fff"
                 } else {
-                    svg.style.fill = "#000";
+                    svg.style.fill = "#000"
                 }
-            });
-        }else {
-            console.log(12);
+            })
+        } else {
+            console.log(12)
         }
-    });
+    })
 
 
 }

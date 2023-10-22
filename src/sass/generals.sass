@@ -1014,3 +1014,48 @@ footer
     right: 0
     bottom: -7px
         
+
+
+
+.product-added-popup-mini
+    position: fixed
+    right: 0
+    bottom: -70px   
+    border-radius: 0.4rem
+    width: 70px
+    height: 70px
+    z-index: 999
+    transition: 0.5s
+    +media(991)
+        background-color: #fff
+        border: 3px solid #c0301c
+        padding: 0 10px
+        width: 20%
+    img
+        position: absolute
+        display: block
+        top: 50%
+        left: 0
+        transform: translateY(-50%)
+        width: 80%
+        margin: auto
+        +media(991)
+            right: 0
+        
+    span
+        position: absolute
+        top: 50%
+        color: #c0301c
+        max-width: 266px    
+        width: 100%
+        transform: translateY(-50%)
+        margin-left: 1rem
+        font-size: 0.9rem
+        font-family: "Montserrat"
+        text-transform: uppercase
+        font-weight: bold
+.tick-svg
+    min-height: 70px
+
+.product-added-popup-mini.product-added
+    bottom: 3%
