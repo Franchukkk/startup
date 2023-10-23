@@ -639,6 +639,8 @@ window.addEventListener('resize', () => {
 
 
 
+// drag для логінізації на сайті
+
 document.addEventListener('DOMContentLoaded', function () {
   let draggedItem = null
 
@@ -648,20 +650,60 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })
 
+  document.addEventListener('touchstart', function (e) {
+    if (e.target.classList.contains('block')) {
+      draggedItem = e.target
+    }
+  })
+
   document.addEventListener('mousemove', function (e) {
     if (draggedItem) {
+      console.log(e.clientX);
       draggedItem.style.position = 'absolute'
-      draggedItem.style.left = e.clientX - draggedItem.offsetWidth / 2 + 'px'
-      draggedItem.style.top = e.clientY - draggedItem.offsetHeight / 2 + 'px'
+      draggedItem.style.zIndex = '-1'
+      draggedItem.style.width = '31px'
+      draggedItem.style.left = e.clientX - document.querySelector(".popup-login").getBoundingClientRect().left + 'px'
+      draggedItem.style.top = e.clientY - document.querySelector(".popup-login").getBoundingClientRect().top + 'px'
+    }
+  })
+
+  document.addEventListener('touchmove', function (e) {
+    if (draggedItem) {
+      e.preventDefault()
+      draggedItem.style.position = 'absolute'
+      draggedItem.style.zIndex = '-1'
+      draggedItem.style.left = e.touches[0].clientX - document.querySelector(".popup-login").getBoundingClientRect().left + 'px'
+      draggedItem.style.top = e.touches[0].clientY - document.querySelector(".popup-login").getBoundingClientRect().top + 'px'
     }
   })
 
   document.addEventListener('mouseup', function (e) {
     if (draggedItem) {
       const dropzone = document.elementFromPoint(e.clientX, e.clientY)
+      console.log(dropzone);
+      if (dropzone && dropzone.classList.contains('dropzone')) {
+        // перевірка чи контейнер порожній
+        if (dropzone.children.length === 0) {
+          dropzone.appendChild(draggedItem)
+          draggedItem.style.position = 'static'
+        } else {
+          // якщо контейнер не порожній не дозволяти вставку
+          draggedItem.style.position = 'static'
+        }
+      } else {
+        draggedItem.style.position = 'static'
+      }
+
+      draggedItem = null
+    }
+  })
+
+  document.addEventListener('touchend', function (e) {
+    if (draggedItem) {
+      const dropzone = document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY)
 
       if (dropzone && dropzone.classList.contains('dropzone')) {
-        // Перевірка чи контейнер порожній
+        // перевірка чи контейнер порожній
         if (dropzone.children.length === 0) {
           dropzone.appendChild(draggedItem)
           draggedItem.style.position = 'static'
