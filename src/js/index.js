@@ -1,8 +1,37 @@
+//Код оновлює висоту <header> на основі висоти вікна браузера та встановлює обробники подій для оновлення висоти при зміні розміру вікна.
+
+//При розмірі вікна менше або рівному 760 пікселів, код додає клас "menu-navigation" до елементу з id "navH". В іншому випадку, цей клас видаляється.
+
+//Код створює бургер-меню, яке відкривається при кліку на кнопку "burger". При кліку на пункт меню бургер-меню, меню закривається.
+
+//Є функція для створення паралаксу при русі мишки на сторінці.
+
+//Є можливість "хаку" сторінки шляхом подвійного кліку на зображення "hacksite", що змінює текст заголовків сторінки.
+
+//Код додає можливість відкривати та закривати блок "blogPop" при кліку на "read-more" і "closeBlog".
+
+//Є анімація для елементів з класами "animate-left-to-right" та "animate-right-to-left", які стають видимими при прокрутці сторінки.
+
+//Код створює слайдер для відгуків користувачів, який автоматично перемикається через певний інтервал.
+
+//Є фільтрація галереї за категоріями за допомогою кнопок "filter-button".
+
+//Код обробляє відправку даних з форми зв'язку, зберігає їх у сесії та виводить підтвердження у вікні "confirmation-popup".
+
+//Є можливість авторизації шляхом перетягування блоків в правильній послідовності та введення коду.
+
+//Є слайдер "partners-slider" з автоматичним перемиканням слайдів.
+
+
+
+
+
+
 const header = document.querySelector("header"),
   headerLine = document.querySelector(".header-line")
 
 
-
+// Функція для оновлення висоти заголовку відповідно до внутрішньої висоти вікна.
 function updateHeaderHeight() {
   const windowInnerHeight = window.innerHeight
   header.style.height = `${windowInnerHeight}px`
@@ -10,11 +39,13 @@ function updateHeaderHeight() {
 
 updateHeaderHeight()
 
+// Додавання слухача подій "resize" для оновлення висоти заголовку при зміні розміру вікна.
 window.addEventListener("resize", updateHeaderHeight)
 
 
 var headerNavigation = document.querySelector('#navH')
 
+// Функція для перевірки ширини вікна та додавання/видалення класу для меню навігації.
 function checkScreenWidth() {
 
   if (window.innerWidth <= 760) {
@@ -25,6 +56,8 @@ function checkScreenWidth() {
 }
 
 const burgerBtn = document.querySelector(".burger")
+
+// Обробник події для відкриття/закриття бургер-меню.
 burgerBtn.onclick = function () {
   headerNavigation.classList.toggle("burger-active")
   burgerBtn.classList.toggle("burger-btn-active")
@@ -33,10 +66,12 @@ burgerBtn.onclick = function () {
 const burgerMenuActiveLi = document.querySelectorAll(".menu-nav li"),
   headerNavAct = document.querySelector(".burger-active")
 
+// Функція для закриття бургер-меню при кліку на пункт навігації.
 function removeBurgerAct() {
   burgerBtn.click()
 }
 
+// Додавання слухача подій для закриття бургер-меню при кліку на пункт навігації.
 burgerMenuActiveLi.forEach((menuItem) => {
   menuItem.addEventListener("click", removeBurgerAct)
 })
@@ -66,23 +101,10 @@ function paralaxOnMouseMove(event) {
   })
 }
 
-// const filterBtns = document.querySelectorAll(".filter-button")
-
-// function click(e) {
-//   filterBtns.forEach((btn) => {
-//     btn.classList.remove("btn-red")
-//   })
-
-//   e.target.classList.add("btn-red")
-// }
-
-// filterBtns.forEach((btn) => {
-//   btn.addEventListener("click", click)
-// })
 
 
 
-
+// Додавання слухача події "mousemove" для реалізації паралакс-ефекту на деяких елементах.
 document.addEventListener('mousemove', paralaxOnMouseMove)
 
 let menuItems = [...document.querySelectorAll(".menu-nav a")]
@@ -96,7 +118,7 @@ menuItems.forEach(item => {
   })
 })
 
-
+// Обробник події для зміни тексту та кольору заголовків при потрійному кліку на зображення.
 let hacksite = document.querySelector("#hacksite img"),
   hacktitles = [...document.querySelectorAll("h3.title-block")]
 
@@ -117,7 +139,7 @@ let closeBlog = document.querySelector("#blogClose"),
 
 
 
-
+// Обробник події для закриття вспливаючого вікна блогу при кліку на сіру область.
 blogPop.addEventListener("click", (e) => {
   if (e.target === blogPop) {
     closeBlog.click()
@@ -134,7 +156,7 @@ closeBlog.addEventListener("click", function () {
   blogPop.style.display = "none"
 })
 
-
+// Функція для запуску анімації елементів, коли вони стають видимими.
 document.addEventListener('DOMContentLoaded', function () {
   const animatedElements = document.querySelectorAll('.animated-element')
 
@@ -250,7 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (savedFilter) {
     applyFilter(savedFilter)
   }
-
+  // Додавання слухача подій "click" для фільтрації елементів галереї при виборі фільтра.
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const filterValue = button.getAttribute("data-filter")
@@ -354,75 +376,6 @@ function getLoginFromSession() {
   return sessionStorage.getItem("loggedInUser")
 }
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   let numbersDrag = document.querySelectorAll(".numbers"),
-//     basket = document.querySelectorAll(".drag-to-each-block"),
-//     checkButton = document.getElementById("check")
-
-//   const loggedInUser = getLoginFromSession()
-//   if (loggedInUser) {
-//     title.innerText = loggedInUser + " ,Welcome Back to STARTUP"
-//     logBtn.style.display = "none"
-//   }
-
-//   numbersDrag.forEach((circle) => {
-//     circle.addEventListener("dragstart", function (e) {
-//       e.dataTransfer.setData("text", e.target.innerHTML)
-//       setTimeout(() => {
-//         this.style.opacity = 0
-//       }, 0)
-//     })
-
-//     circle.addEventListener("dragend", function () {
-//       this.style.opacity = "1"
-//     })
-//   })
-
-//   basket.forEach((basketItem) => {
-//     basketItem.addEventListener("dragover", function (e) {
-//       e.preventDefault()
-//     })
-
-//     basketItem.addEventListener("drop", function (e) {
-//       e.preventDefault()
-//       const dataValue = e.dataTransfer.getData("text")
-//       if (dataValue) {
-//         const newItem = document.createElement("div")
-//         newItem.classList.add("numbers")
-//         newItem.textContent = dataValue
-//         this.appendChild(newItem)
-
-//         numbersDrag.forEach((circle) => {
-//           if (circle.textContent === dataValue) {
-//             circle.parentNode.removeChild(circle)
-//           }
-//         })
-
-//         if (dataValue === "123456") {
-//           alert("Вітаю!")
-//         }
-//       }
-//     })
-//   })
-
-// checkButton.addEventListener("click", function () {
-//     const basketNumbers = document.querySelectorAll(".drag-to-each-block .numbers")
-//     const loginInput = document.querySelector(".popup-login-content input")
-//     const login = loginInput.value
-
-//     saveLoginToSession(login)
-
-//     const codeEntered = Array.from(basketNumbers).map((item) => item.textContent).join("")
-
-//     if (codeEntered === "123456") {
-//       popup.style.display = "none"
-//       title.innerText = login + " ,Welcome Back to STARTUP"
-//       logBtn.style.display = "none"
-//     } else {
-//       alert("Password is wrong")
-//     }
-//   })
-// })
 
 logBtn.onclick = function () {
   document.querySelector("#login-popup").style.display = "block"
@@ -434,203 +387,16 @@ popup.addEventListener("click", (event) => {
   }
 })
 
-
-// document.addEventListener('DOMContentLoaded', () => {
-
-//   let blocks = document.querySelectorAll('.content-slider-infinity')
-//   const blockSlider = document.querySelector('.blocks-infinity-slider').offsetWidth
-
-//   let leftPosition = 0,
-//     space = 0
-//   if (window.innerWidth < 768 && window.innerWidth >= 576) {
-//     leftPosition = (blockSlider - 263) / 2
-//   }
-//   blocks.forEach((block) => {
-//     block.style.position = 'absolute'
-//     block.style.left = `${leftPosition}px`
-//     if (window.innerWidth >= 1200) {
-//       space = (blockSlider - (263 * 4)) / 3
-//       leftPosition += 263 + (blockSlider - (263 * 4)) / 3 //  відстань між карточками
-//     } else if (window.innerWidth >= 992) {
-//       space = (blockSlider - (263 * 3)) / 2
-//       leftPosition += 263 + (blockSlider - (263 * 3)) / 2 //  відстань між карточками
-//     } else if (window.innerWidth >= 768) {
-//       space = (blockSlider - (263 * 2)) / 1
-//       leftPosition += 263 + (blockSlider - (263 * 2)) / 1 //  відстань між карточками
-//     } else if (window.innerWidth < 768) {
-//       space = ((blockSlider - (263 * 1)) / 1)
-//       leftPosition += blockSlider //  відстань між карточками
-//     }
-//   })
-
-
-//   const leftButton = document.querySelector('.control-slide-left')
-//   const rightButton = document.querySelector('.control-slide-right')
-//   let canClick = true
-//   leftButton.addEventListener('click', () => {
-//     const FirstlastBlock = blocks[5],
-//       newFirstCopy = FirstlastBlock.cloneNode(true)
-//     newFirstCopy.style.transition = "1s"
-//     newFirstCopy.style.left = -(263 + space) + "px"
-//     setTimeout(() => {
-//       newFirstCopy.style.left = 0
-//     }, 0)
-//     if (canClick) {
-//       canClick = false
-//       blocks.forEach((block) => {
-//         const currentLeft = parseInt(block.style.left, 10)
-
-//         const newLeft = currentLeft + (263 + space)
-//         block.style.left = `${newLeft}px`
-
-
-//       })
-//       document.querySelector('.blocks-infinity-slider').insertBefore(newFirstCopy, blocks[0])
-//       setTimeout(() => {
-//         FirstlastBlock.remove()
-//         blocks = document.querySelectorAll('.content-slider-infinity')
-//         canClick = true
-//       }, 1000)
-//     }
-//   })
-
-
-//   rightButton.addEventListener('click', () => {
-//     if (canClick) {
-//       canClick = false
-
-//       const firstBlockToDeleteCopy = blocks[0].cloneNode(true)
-//       firstBlockToDeleteCopy.classList.add("ss")
-//       blocks.forEach((block) => {
-//         const currentLeft = parseInt(block.style.left, 10)
-//         firstBlockToDeleteCopy.style.left = currentLeft + "px"
-//         const newLeft = currentLeft - (263 + space)
-//         block.style.left = `${newLeft}px`
-//       })
-//       document.querySelector('.blocks-infinity-slider').appendChild(firstBlockToDeleteCopy)
-
-//       setTimeout(() => {
-//         blocks[0].remove()
-//         blocks = document.querySelectorAll('.content-slider-infinity')
-//         canClick = true
-//       }, 1000)
-//     }
-//   })
-
-// })
-
-
-
-
-
-// код без свайпа на телефоні
-
-// function updateLayout() {
-//   let blocks = document.querySelectorAll('.content-slider-infinity')
-//   const blockSlider = document.querySelector('.blocks-infinity-slider').offsetWidth
-//   let leftPosition = 0,
-//     space = 0
-
-//   if (window.innerWidth < 768 && window.innerWidth >= 576) {
-//     leftPosition = (blockSlider - 263) / 2
-//   }
-
-//   blocks.forEach((block) => {
-//     block.style.position = 'absolute'
-//     block.style.left = `${leftPosition}px`
-
-//     if (window.innerWidth >= 1200) {
-//       space = (blockSlider - (263 * 4)) / 3
-//       leftPosition += 263 + space // 
-//     } else if (window.innerWidth >= 992) {
-//       space = (blockSlider - (263 * 3)) / 2
-//       leftPosition += 263 + space
-//     } else if (window.innerWidth >= 768) {
-//       space = (blockSlider - (263 * 2))
-//       leftPosition += 263 + space
-//     } else if (window.innerWidth < 768) {
-//       space = (blockSlider - 263)
-//       leftPosition += blockSlider
-//     }
-//   })
-
-//   const leftButton = document.querySelector('.control-slide-left')
-//   const rightButton = document.querySelector('.control-slide-right')
-//   let canClick = true
-//   leftButton.addEventListener('click', () => {
-//     const FirstlastBlock = blocks[5],
-//       newFirstCopy = FirstlastBlock.cloneNode(true)
-//     newFirstCopy.style.transition = "1s"
-//     newFirstCopy.style.left = -(263 + space) + "px"
-//     setTimeout(() => {
-//       if (window.innerWidth > 768) {
-//         newFirstCopy.style.left = 0
-//       } else {
-//         newFirstCopy.style.left = (blockSlider - 263) / 2 + "px"
-//       }
-//     }, 0)
-//     if (canClick) {
-//       canClick = false
-//       blocks.forEach((block) => {
-//         const currentLeft = parseInt(block.style.left, 10)
-
-//         const newLeft = currentLeft + (263 + space)
-//         block.style.left = `${newLeft}px`
-
-
-//       })
-//       document.querySelector('.blocks-infinity-slider').insertBefore(newFirstCopy, blocks[0])
-//       setTimeout(() => {
-//         FirstlastBlock.remove()
-//         blocks = document.querySelectorAll('.content-slider-infinity')
-//         canClick = true
-//       }, 1000)
-//     }
-//   })
-
-
-//   rightButton.addEventListener('click', () => {
-//     if (canClick) {
-//       canClick = false
-
-//       const firstBlockToDeleteCopy = blocks[0].cloneNode(true)
-//       firstBlockToDeleteCopy.classList.add("ss")
-//       blocks.forEach((block) => {
-//         const currentLeft = parseInt(block.style.left, 10)
-//         firstBlockToDeleteCopy.style.left = currentLeft + "px"
-//         const newLeft = currentLeft - (263 + space)
-//         block.style.left = `${newLeft}px`
-//       })
-//       document.querySelector('.blocks-infinity-slider').appendChild(firstBlockToDeleteCopy)
-
-//       setTimeout(() => {
-//         blocks[0].remove()
-//         blocks = document.querySelectorAll('.content-slider-infinity')
-//         canClick = true
-//       }, 1000)
-//     }
-//   })
-
-//   window.addEventListener('resize', updateLayout)
-// }
-
-// document.addEventListener('DOMContentLoaded', updateLayout)
-
-
-
-
-
-
-
-
-
-
+// Функція для оновлення розташування блоків на сторінці та керування слайдером
 function updateLayout() {
+  // Вибираємо всі блоки з класом "content-slider-infinity"
   let blocks = document.querySelectorAll('.content-slider-infinity')
+  // Знаходимо розмір контейнера "blocks-infinity-slider"
   const blockSlider = document.querySelector('.blocks-infinity-slider').offsetWidth
   let leftPosition = 0,
     space = 0
 
+  // Розглядаємо різні варіанти ширини вікна
   if (window.innerWidth < 768 && window.innerWidth >= 576) {
     leftPosition = (blockSlider - 263) / 2
   }
@@ -654,6 +420,7 @@ function updateLayout() {
     }
   })
 
+  // Вибираємо кнопки для перемикання слайдів
   const leftButton = document.querySelector('.control-slide-left'),
     rightButton = document.querySelector('.control-slide-right')
   let canClick = true
@@ -661,10 +428,12 @@ function updateLayout() {
   let touchStartX = 0,
     touchEndX = 0
 
+
+  // Додаємо обробник події для початку свайпу на сенсорних пристроях
   document.addEventListener('touchstart', function (e) {
     touchStartX = e.touches[0].clientX
   })
-
+  // Додаємо обробник події для завершення свайпу
   document.addEventListener('touchend', function (e) {
     touchEndX = e.changedTouches[0].clientX
 
@@ -695,7 +464,9 @@ function updateLayout() {
     }
   })
 
+  // Додаємо обробник події для кліку на кнопці "Вліво"
   leftButton.addEventListener('click', () => {
+    // Копіюємо останній блок
     const FirstlastBlock = blocks[4],
       newFirstCopy = FirstlastBlock.cloneNode(true)
     newFirstCopy.style.transition = "1s"
@@ -715,6 +486,8 @@ function updateLayout() {
     }, 0)
     if (canClick) {
       canClick = false
+
+      // Зсуваємо всі блоки вліво
       blocks.forEach((block) => {
         const currentLeft = parseInt(block.style.left, 10)
 
@@ -723,8 +496,11 @@ function updateLayout() {
 
 
       })
+
+      // Зсуваємо всі блоки вліво
       document.querySelector('.blocks-infinity-slider').insertBefore(newFirstCopy, blocks[0])
       setTimeout(() => {
+        // Видаляємо останній блок
         FirstlastBlock.remove()
         blocks = document.querySelectorAll('.content-slider-infinity')
         canClick = true
@@ -732,22 +508,27 @@ function updateLayout() {
     }
   })
 
-
+  // Додаємо обробник події для кліку на кнопці "Вправо"
   rightButton.addEventListener('click', () => {
     if (canClick) {
       canClick = false
 
+      // Копіюємо перший блок
       const firstBlockToDeleteCopy = blocks[0].cloneNode(true)
       firstBlockToDeleteCopy.classList.add("ss")
+      // Зсуваємо всі блоки вправо
       blocks.forEach((block) => {
         const currentLeft = parseInt(block.style.left, 10)
         firstBlockToDeleteCopy.style.left = currentLeft + "px"
         const newLeft = currentLeft - (263 + space)
         block.style.left = `${newLeft}px`
       })
+
+      // Додаємо копію першого блоку в кінець
       document.querySelector('.blocks-infinity-slider').appendChild(firstBlockToDeleteCopy)
 
       setTimeout(() => {
+        // Видаляємо перший блок
         blocks[0].remove()
         blocks = document.querySelectorAll('.content-slider-infinity')
         canClick = true
@@ -755,6 +536,7 @@ function updateLayout() {
     }
   })
 
+  // Визначаємо затримку для обробки ресайзу
   let resizeTimeout
 
   function onResize() {
@@ -763,11 +545,12 @@ function updateLayout() {
       updateLayout()
     }, 1000)
   }
-
+  // Додаємо обробник події на ресайз вікна
   window.addEventListener('resize', onResize)
 
 }
 
+// Додаємо обробник події для виклику функції updateLayout при завантаженні сторінки
 document.addEventListener('DOMContentLoaded', updateLayout)
 
 
@@ -853,41 +636,6 @@ window.addEventListener('resize', () => {
     clearInterval(interval)
   }, 1000) 
 })
-
-
-
-
-
-
-// let circles = document.querySelectorAll(".circles"),
-//   elementDragged = null,
-//   corX, corY
-
-// circles.forEach(circle => {
-
-//   circle.addEventListener("mousedown", function (e) {
-//     elementDragged = e.target
-//     corX = e.pageX - circle.getBoundingClientRect().x
-//     corY = e.pageY - circle.getBoundingClientRect().y
-//     elementDragged.style.position = "fixed"
-//     elementDragged.addEventListener("mousemove", move)
-//   })
-
-// })
-
-// function move(e) {
-//   if (elementDragged) {
-//     elementDragged.style.left = e.pageX - corX + "px"
-//     elementDragged.style.top = e.pageY - corY + "px"
-//   }
-// }
-
-// window.addEventListener("mouseup", function () {
-//   if (elementDragged) {
-//     elementDragged.removeEventListener("mousemove", move)
-//     elementDragged = null
-//   }
-// })
 
 
 

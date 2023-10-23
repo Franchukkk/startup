@@ -1,7 +1,20 @@
+// Функція для збереження кошика в localStorage
+function saveCartToLocalStorage(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart))
+}
+
+// Функція для завантаження кошика з localStorage
+function loadCartFromLocalStorage() {
+    const cart = localStorage.getItem('cart')
+    return cart ? JSON.parse(cart) : {}
+}
+
+// Початкове завантаження кошика
+let cart = loadCartFromLocalStorage()
+
 if (products) {
     let buyBtns = document.querySelectorAll(".add-to-cart-js"),
         productsTable = document.querySelector(".table-products-basket"),
-        cart = {}, // Об'єкт для відстеження товарів у кошику
         busketIco = document.querySelector(".busket-ico-counter"),
         productAdded = document.querySelector(".product-added-popup-mini")
 
@@ -12,8 +25,8 @@ if (products) {
                 productAdded.classList.remove("product-added")
             }, 1000)
 
-            busketIco.innerHTML = //тут має бути вся кількість замовлених одиниць товарів
-                e.preventDefault()
+            busketIco.innerHTML = calculateTotalQuantity(cart)
+            e.preventDefault()
             let dataValue = btn.dataset.value
             let product = products[dataValue]
 
@@ -110,9 +123,9 @@ if (products) {
             newRow.innerHTML = `
                 <td><img src="${product.img}"></td>
                 <td>${product.title}</td>
-                <td>${product.price}</td>
+                <td>${product.price}$</td>
                 <td>${quantity}</td>
-                <td>${totalPrice}</td>
+                <td><b>Total: ${totalPrice}$</b></td>
             `
 
             // Додаємо кнопки "+" та "-" для зміни кількості товару
@@ -148,10 +161,13 @@ if (products) {
         // Оновлення загальної ціни кошика
         let totalRow = productsTable.insertRow()
         totalRow.innerHTML = `
-            <td colspan="4">Total</td>
-            <td>${calculateTotalCartPrice()}</td>
+            <td colspan="4"><b>Total</b></td>
+            <td><b>${calculateTotalCartPrice()}$</b></td>
         `
         busketIco.innerHTML = calculateTotalQuantity(cart)
+
+        // Оновлення localStorage з оновленим кошиком
+        saveCartToLocalStorage(cart)
     }
 
     function calculateTotalQuantity(cart) {
@@ -180,17 +196,20 @@ if (products) {
 
         if (svg) {
             window.addEventListener("scroll", () => {
-                console.log(svg)
                 if (window.scrollY < document.querySelector("header").getBoundingClientRect().height) {
                     svg.style.fill = "#fff"
+                    burgerBtn.classList.add("burgerLight")
+                    burgerBtn.classList.remove("burgerDark")
+                    
                 } else {
+                    burgerBtn.classList.add("burgerDark")
+                    burgerBtn.classList.remove("burgerLight")
                     svg.style.fill = "#000"
                 }
             })
-        } else {
-            console.log(12)
         }
     })
-
-
+    document.querySelector("#button-close").addEventListener("click", () => {
+        busketOut.click()
+    })
 }
