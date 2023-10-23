@@ -30,6 +30,17 @@
 const header = document.querySelector("header"),
   headerLine = document.querySelector(".header-line")
 
+let reloadTimeout
+
+window.addEventListener("resize", function () {
+  clearTimeout(reloadTimeout) 
+
+  reloadTimeout = setTimeout(function () {
+    location.reload()
+  }, 1000) 
+})
+
+
 
 // Функція для оновлення висоти заголовку відповідно до внутрішньої висоти вікна.
 function updateHeaderHeight() {
@@ -619,10 +630,15 @@ function updateLayout1() {
   })
 
   document.querySelector('.partners-slider').addEventListener("mouseover", () => {
-    clearInterval(autoSlideInterval)
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval)
+    }
   })
   document.querySelector('.partners-slider').addEventListener('mouseout', () => {
-    autoSlideInterval = setInterval(autoChangeSlide, 2000)
+    if (autoSlideInterval) {
+      autoSlideInterval = setInterval(autoChangeSlide, 2000)
+
+    }
   })
 }
 document.addEventListener('DOMContentLoaded', updateLayout1)
@@ -630,11 +646,16 @@ document.addEventListener('DOMContentLoaded', updateLayout1)
 let resizeTimeout
 
 window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout) 
+  clearTimeout(resizeTimeout)
   resizeTimeout = setTimeout(() => {
-    clearInterval(autoSlideInterval)
-    clearInterval(interval)
-  }, 1000) 
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval)
+    }
+    if (interval) {
+      clearInterval(interval)
+
+    }
+  }, 1000)
 })
 
 
@@ -658,7 +679,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('mousemove', function (e) {
     if (draggedItem) {
-      console.log(e.clientX);
+      console.log(e.clientX)
       draggedItem.style.position = 'absolute'
       draggedItem.style.zIndex = '-1'
       draggedItem.style.width = '31px'
@@ -680,7 +701,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('mouseup', function (e) {
     if (draggedItem) {
       const dropzone = document.elementFromPoint(e.clientX, e.clientY)
-      console.log(dropzone);
+      console.log(dropzone)
       if (dropzone && dropzone.classList.contains('dropzone')) {
         // перевірка чи контейнер порожній
         if (dropzone.children.length === 0) {
